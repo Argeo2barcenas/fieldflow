@@ -14,11 +14,11 @@ Build a working tool end to end in about 7 days, put it in front of real people,
 
 ## 3. Users
 
-| Role | What they need |
-|------|----------------|
-| Office coordinator | See all jobs, assign technicians, change status |
-| Technician | See own jobs on a phone, send field notes after a visit |
-| Owner | See cost and margin per job |
+| Role               | What they need                                          |
+| ------------------ | ------------------------------------------------------- |
+| Office coordinator | See all jobs, assign technicians, change status         |
+| Technician         | See own jobs on a phone, send field notes after a visit |
+| Owner              | See cost and margin per job                             |
 
 ## 4. Assumptions to validate
 
@@ -64,19 +64,19 @@ TypeScript (strict) · Next.js (App Router) · Supabase (Postgres, Auth, RLS) ·
 Fill this in with real sessions. Do not invent entries.
 
 | Date | Tester (role or relation) | What they tried | Where they got stuck | What I changed |
-|------|---------------------------|-----------------|----------------------|----------------|
+| ---- | ------------------------- | --------------- | -------------------- | -------------- |
 |      |                           |                 |                      |                |
 
 ## 10. Plan (7 days)
 
-| Day | Focus |
-|-----|-------|
-| 1 | Repo, Next.js + TypeScript, Supabase project, first Vercel deploy, CLAUDE.md |
-| 2 | Database schema, auth, roles, RLS, seed data |
-| 3-4 | Dispatch board, technician view, cost tracking and margin report |
-| 5 | AI feature: field notes to structured report |
-| 6 | Tests, CI, user testing sessions, fixes |
-| 7 | README, Loom video, final polish |
+| Day | Focus                                                                        |
+| --- | ---------------------------------------------------------------------------- |
+| 1   | Repo, Next.js + TypeScript, Supabase project, first Vercel deploy, CLAUDE.md |
+| 2   | Database schema, auth, roles, RLS, seed data                                 |
+| 3-4 | Dispatch board, technician view, cost tracking and margin report             |
+| 5   | AI feature: field notes to structured report                                 |
+| 6   | Tests, CI, user testing sessions, fixes                                      |
+| 7   | README, Loom video, final polish                                             |
 
 ## 11. Definition of done
 
