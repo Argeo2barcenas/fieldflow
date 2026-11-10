@@ -1,0 +1,5 @@
+# Normalize text files
+* text=auto
+
+# SQL files always use LF
+*.sql text eol=lf
