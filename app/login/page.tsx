@@ -1,13 +1,20 @@
+import type { Metadata } from "next";
 import { Suspense } from "react";
+import { SubmitButton } from "@/components/ui/submit-button";
 import { login } from "./actions";
 
-const errorMessages: Record<string, string> = {
+export const metadata: Metadata = { title: "Sign in" };
+
+const ERROR_MESSAGES: Record<string, string> = {
   invalid: "Enter a valid email and a password.",
   credentials: "Incorrect email or password.",
 };
 
-// The page shell (title and form) is static. Only the error message depends on
-// the request (searchParams), so it is wrapped in <Suspense>.
+const INPUT =
+  "w-full rounded-md border border-line bg-surface px-3 py-2 text-sm focus-visible:outline-2 focus-visible:outline-offset-1 focus-visible:outline-accent";
+
+// The page shell (title and form) is static. Only the error message depends
+// on the request (searchParams), so it is wrapped in <Suspense>.
 export default function LoginPage({
   searchParams,
 }: {
@@ -16,44 +23,50 @@ export default function LoginPage({
   return (
     <main className="mx-auto flex min-h-screen max-w-sm flex-col justify-center gap-6 p-6">
       <div>
-        <h1 className="text-2xl font-semibold">FieldFlow</h1>
-        <p className="mt-1 text-sm text-zinc-600">
+        <h1 className="text-2xl font-semibold tracking-tight">FieldFlow</h1>
+        <p className="mt-1 text-sm text-muted">
           Demo app with fictional data. Sign in with a demo account.
         </p>
       </div>
 
-      <form action={login} className="flex flex-col gap-4">
-        <label className="flex flex-col gap-1 text-sm font-medium">
-          Email
+      <form
+        action={login}
+        className="space-y-4 rounded-lg border border-line bg-surface p-5"
+      >
+        <div>
+          <label htmlFor="email" className="mb-1 block text-sm font-medium">
+            Email
+          </label>
           <input
+            id="email"
             name="email"
             type="email"
             required
             autoComplete="email"
-            className="rounded border border-zinc-300 px-3 py-2 font-normal"
+            className={INPUT}
           />
-        </label>
-        <label className="flex flex-col gap-1 text-sm font-medium">
-          Password
+        </div>
+        <div>
+          <label htmlFor="password" className="mb-1 block text-sm font-medium">
+            Password
+          </label>
           <input
+            id="password"
             name="password"
             type="password"
             required
             autoComplete="current-password"
-            className="rounded border border-zinc-300 px-3 py-2 font-normal"
+            className={INPUT}
           />
-        </label>
+        </div>
 
         <Suspense fallback={null}>
           <ErrorMessage searchParams={searchParams} />
         </Suspense>
 
-        <button
-          type="submit"
-          className="rounded bg-zinc-900 px-3 py-2 text-sm font-medium text-white hover:bg-zinc-700"
-        >
+        <SubmitButton className="w-full" pendingLabel="Signing in...">
           Sign in
-        </button>
+        </SubmitButton>
       </form>
     </main>
   );
@@ -65,11 +78,11 @@ async function ErrorMessage({
   searchParams: Promise<{ error?: string }>;
 }) {
   const { error } = await searchParams;
-  const message = error ? errorMessages[error] : undefined;
+  const message = error ? ERROR_MESSAGES[error] : undefined;
   if (!message) return null;
 
   return (
-    <p role="alert" className="text-sm text-red-600">
+    <p role="alert" className="text-sm text-danger">
       {message}
     </p>
   );
